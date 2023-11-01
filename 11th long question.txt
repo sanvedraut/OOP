@@ -1,0 +1,37 @@
+A batch of 10 students enrolled for specialized course in Computer Engineering department. The reputed IT industry announced its placement drive. The eligibility criteria for placement are the average of five semesters marks should be greater than equal to 70% and at least 60% marks in each semester. Display all the eligible students and their average marks. Also display students who are not eligible. Note: Marks should be between 1 to 100
+#include <iostream>
+#include <string>
+struct Student {
+ std::string name;
+ double marks[5];
+};
+int main() {
+ const int numStudents = 10;
+ Student students[numStudents];
+ for (int i = 0; i < numStudents; ++i) {
+ std::cout << "Enter the name of student " << i + 1 << ": ";
+ std::cin >> students[i].name;
+ double totalMarks = 0;
+ bool eligible = true;
+ for (int j = 0; j < 5; ++j) {
+ std::cout << "Enter marks for Semester " << j + 1 << " (out of 100): ";
+ std::cin >> students[i].marks[j];
+ if (students[i].marks[j] < 0 || students[i].marks[j] > 100) {
+ std::cout << "Invalid marks entered. Marks should be between 0 and 100. Please re-enter.\n";
+ --j;
+ continue;
+ }
+ totalMarks += students[i].marks[j];
+ if (students[i].marks[j] < 60) {
+ eligible = false;
+ }
+ }
+ double averageMarks = totalMarks / 5;
+ if (eligible && averageMarks >= 70) {
+ std::cout << students[i].name << " is eligible with an average of " << averageMarks << "%" << std::endl;
+ } else {
+ std::cout << students[i].name << " is not eligible." << std::endl;
+ }
+ }
+ return 0;
+}

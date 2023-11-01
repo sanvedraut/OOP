@@ -1,0 +1,45 @@
+Write a program to read the class object of Student such as Rollno, Name, Class, Division and
+Marks. Create functions inside class to take input from the keyboard using getStudentData() and DisplayStudentData() for displaying the student details on the screen.#include<iostream>
+
+using namespace std;
+
+class Student {
+    int Rollno;
+    string Name;
+    string Class;
+    string Division;
+    float Marks;
+
+public:
+    void getStudentData() {
+        cout << "Enter Student Rollno: ";
+        cin >> Rollno;
+
+        cout << "Enter Student Name: ";
+        cin >> Name;
+
+        cout << "Enter Student Class: ";
+        cin >> Class;
+
+        cout << "Enter Student Division: ";
+        cin >> Division;
+
+        cout << "Enter Student Marks: ";
+        cin >> Marks;
+    }
+
+    void DisplayStudentData() {
+        cout << "Student Rollno: " << Rollno << endl;
+        cout << "Student Name: " << Name << endl;
+        cout << "Student Class: " << Class << endl;
+        cout << "Student Division: " << Division << endl;
+        cout << "Student Marks: " << Marks << endl;
+    }
+};
+
+int main() {
+    Student student;
+    student.getStudentData();
+    student.DisplayStudentData();
+    return 0;
+}

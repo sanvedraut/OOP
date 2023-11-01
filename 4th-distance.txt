@@ -1,0 +1,41 @@
+Write a C++ program to accept (read) two distances from the user and perform addition of those two distances by applying operator overloading concept and display total distance with proper unit on screen.
+
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+class Distance {
+    private:
+        float meters;
+
+    public:
+        void inputDistance() {
+            cout << "Enter distance in meters: ";
+            cin >> meters;
+        }
+
+        Distance operator + (Distance &distance2) {
+            Distance tempDistance;
+            tempDistance.meters = this->meters + distance2.meters;
+            return tempDistance;
+        }
+
+        void displayDistance() {
+            cout << fixed << setprecision(2);
+            cout << "Total distance: " << meters << " meters" << endl;
+        }
+};
+
+int main() {
+    Distance distance1, distance2, totalDistance;
+
+    distance1.inputDistance();
+    distance2.inputDistance();
+
+    totalDistance = distance1 + distance2;
+
+    totalDistance.displayDistance();
+
+    return 0;
+}

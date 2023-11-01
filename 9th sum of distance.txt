@@ -1,0 +1,53 @@
+Write a C++ program to calculate sum of distance and display the results using friend Function
+
+#include <iostream>   
+ 
+class Distance { 
+private: 
+    int feet; 
+    float inches; 
+ 
+public: 
+    Distance() : feet(0), inches(0.0) {} 
+ 
+    Distance(int ft, float in) : feet(ft), inches(in) {} 
+ 
+    // Declare a friend function 
+    friend Distance addDistances(const Distance& d1, const Distance& d2); 
+ 
+    void displayDistance() { 
+        std::cout << "Distance: " << feet << " feet " << inches << " inches" << std::endl; 
+    } 
+}; 
+ 
+// Define the friend function to add distances 
+Distance addDistances(const Distance& d1, const Distance& d2) { 
+    int newFeet = d1.feet + d2.feet; 
+    float newInches = d1.inches + d2.inches; 
+ 
+    if (newInches >= 12.0) { 
+        newInches -= 12.0; 
+        newFeet++; 
+    } 
+ 
+    return Distance(newFeet, newInches); 
+} 
+ 
+int main() { 
+    Distance distance1(5, 8.5); 
+    Distance distance2(3, 10.25); 
+ 
+    Distance sum = addDistances(distance1, distance2); 
+ 
+    std::cout << "Distance 1:" << std::endl; 
+    distance1.displayDistance(); 
+ 
+    std::cout << "Distance 2:" << std::endl; 
+    distance2.displayDistance(); 
+ 
+    std::cout << "Sum of Distances:" << std::endl; 
+    sum.displayDistance(); 
+ 
+    return 0; 
+} 
+

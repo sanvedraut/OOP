@@ -1,0 +1,24 @@
+Write a C++ program that displays a decimal number in reverse order. (Ex. If number is 34521, output expected is 12543)
+
+#include <iostream> 
+ 
+int main() { 
+    int number, reversed = 0; 
+ 
+    // Input the decimal number 
+    std::cout << "Enter a decimal number: "; 
+    std::cin >> number; 
+ 
+    // Reverse the number 
+    while (number > 0) { 
+        int digit = number % 10; 
+        reversed = (reversed * 10) + digit; 
+        number /= 10; 
+    } 
+ 
+    // Display the reversed number 
+    std::cout << "Reversed number: " << reversed << std::endl; 
+ 
+    return 0; 
+} 
+

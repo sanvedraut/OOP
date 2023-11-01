@@ -1,0 +1,28 @@
+Demonstrate example of friend function with class
+
+#include <iostream>
+
+class MyClass {
+private:
+    int privateData;
+
+public:
+    MyClass(int data) : privateData(data) {}
+
+    // Declare the friend function
+    friend void displayPrivateData(const MyClass& obj);
+};
+
+// Define the friend function
+void displayPrivateData(const MyClass& obj) {
+    std::cout << "Private Data: " << obj.privateData << std::endl;
+}
+
+int main() {
+    MyClass obj(42);
+
+    // Call the friend function to display private data
+    displayPrivateData(obj);
+
+    return 0;
+}
