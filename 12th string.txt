@@ -1,26 +1,25 @@
-Write a C++ program to accept and display string entered by the user and performs String operations on it using following string functions.
-a. strcat()
-b. strrev() c. strcmp()
-d. strlen( e. strchr()
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 
 int main() {
-    char str1[50], str2[50];
+    char str1[100], str2[50];
     cout << "Enter first string: ";
-    cin >> str1;
+    cin.getline(str1, sizeof(str1)); // Use getline to read a whole line
 
     cout << "Enter second string: ";
-    cin >> str2;
+    cin.getline(str2, sizeof(str2)); // Use getline to read a whole line
 
     // Appending str2 to str1 using strcat()
     strcat(str1, str2);
     cout << "After appending, the string is: " << str1 << endl;
 
-    // Reversing str1 using strrev()
-    strrev(str1);
+    // Reversing str1 using a loop
+    int len = strlen(str1);
+    for (int i = 0; i < len / 2; i++) {
+        swap(str1[i], str1[len - 1 - i]);
+    }
     cout << "After reversing, the string is: " << str1 << endl;
 
     // Comparing str1 and str2 using strcmp()
@@ -39,4 +38,7 @@ int main() {
     // Finding the first occurrence of 'a' in str1 using strchr()
     char* firstOccurrence = strchr(str1, 'a');
     if (firstOccurrence)
-        cout << "The first occurrence of 'a' is at position: " << (firstOccurrence - str1) +
+        cout << "The first occurrence of 'a' is at position: " << (firstOccurrence - str1) << endl;
+
+    return 0;
+}
